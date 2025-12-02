@@ -1,0 +1,11 @@
+class Solution {
+    long sumOfFifthPowers(long N) {
+     
+        long n2 = N * N;
+        long np12 = (N+1) * (N+1);
+        long poly = 2 * n2 + 2 * N - 1;
+
+        return (n2 * np12 * poly) / 12;
+
+    }
+}
