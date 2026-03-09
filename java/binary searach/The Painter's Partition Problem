@@ -1,0 +1,36 @@
+https://www.geeksforgeeks.org/problems/the-painters-partition-problem1535/1
+class Solution {
+    public int calpaint(int[]arr,int cap){
+        int sum=0,n=arr.length,painter=1;
+        for(int i=0;i<n;i++){
+            if(sum+arr[i]<=cap){
+                sum = sum+arr[i];
+            }
+            else{
+                sum = arr[i];
+                painter++;
+            }
+        }
+        return painter;
+    }
+    public int minTime(int[] arr, int k) {
+        int low = 0;
+        int high = 0;
+        for(int i=0;i<arr.length;i++){
+            high = high + arr[i];
+            low = Math.max(low,arr[i]);
+        }
+      int ans = 0;
+        while(low<=high){
+            int mid = (low+high)/2;
+            int requiredpainters = calpaint(arr,mid);
+            if(requiredpainters<=k){
+                high = mid-1;
+            }
+            else{
+                low=mid+1;
+            }
+        }
+        return low;
+    }
+}
