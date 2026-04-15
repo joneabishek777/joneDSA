@@ -1,0 +1,15 @@
+https://www.geeksforgeeks.org/problems/finding-middle-element-in-a-linked-list/1
+class Solution {
+    int getMiddle(Node head) {
+        // code here
+      Node fast = head;
+      Node slow = head;
+      while(fast!=null && fast.next!=null){
+          fast = fast.next.next;
+          slow = slow.next;
+      }
+      return slow.data;
+      
+    }   
+    
+    }
