@@ -1,0 +1,72 @@
+class Node {
+    int data;
+    Node next;
+
+    Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+public class Main {
+
+    // Insert before using prev pointer
+    public static Node insertBefore(Node head, int target, int value) {
+
+        Node prev = null;
+        Node curr = head;
+
+        while (curr != null) {
+
+            if (curr.data == target) {
+
+                Node newNode = new Node(value);
+
+                // Case 1: insert before head
+                if (prev == null) {
+                    newNode.next = head;
+                    return newNode;
+                }
+
+                // Normal case
+                prev.next = newNode;
+                newNode.next = curr;
+
+                return head;
+            }
+
+            prev = curr;
+            curr = curr.next;
+        }
+
+        System.out.println("Target not found!");
+        return head;
+    }
+
+    // Print linked list
+    public static void printList(Node head) {
+        Node temp = head;
+        while (temp != null) {
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
+        }
+        System.out.println("null");
+    }
+
+    public static void main(String[] args) {
+
+        // Creating list: 1 → 2 → 3 → 5
+        Node head = new Node(1);
+        head.next = new Node(2);
+        head.next.next = new Node(3);
+        head.next.next.next = new Node(5);
+        System.out.println("Before insertion:");
+        printList(head);
+
+        // Insert 4 before 5
+        head = insertBefore(head, 5, 4);
+
+        System.out.println("After insertion:");
+        printList(head);
+    }
+}
