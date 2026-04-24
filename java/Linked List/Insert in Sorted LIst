@@ -1,0 +1,19 @@
+https://www.geeksforgeeks.org/problems/insert-in-a-sorted-list/1
+class Solution {
+    Node sortedInsert(Node head, int key) {
+        // Add your code here.
+       Node newNode = new Node(key);
+       if(head==null || head.data>key){
+           newNode.next=head;
+           return newNode;
+       }
+       Node ptr = head;
+       while(ptr.next!=null && ptr.next.data<key){
+           ptr=ptr.next;
+       }
+       newNode.next=ptr.next;
+       ptr.next=newNode;
+       
+       return head;
+    }
+}
