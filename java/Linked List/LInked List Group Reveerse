@@ -1,0 +1,26 @@
+https://www.geeksforgeeks.org/problems/reverse-a-linked-list-in-groups-of-given-size/1
+class Solution {
+    public Node reverseKGroup(Node head, int k) {
+        // code here
+        if(head==null){
+            return null;
+        }
+        Node curr = head;
+        Node prev = null;
+        Node next = null;
+        int count = 0;
+        
+        while(count<k && curr!=null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+            count++;
+        }
+        if (next != null) {
+            head.next = reverseKGroup(next, k);
+        }
+
+        return prev;
+    }
+}
