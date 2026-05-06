@@ -1,0 +1,32 @@
+https://www.geeksforgeeks.org/problems/parenthesis-checker2744/1
+class Solution {
+    public boolean isBalanced(String s) {
+        // code here
+        int len = s.length();
+        Stack<Character> k = new Stack<>();
+        for(int i=0;i<len;i++){
+            char ch = s.charAt(i);
+            if(ch == '{' || ch== '[' || ch== '('){
+                k.push(ch);
+            }
+            else{
+                if(k.isEmpty())      return false;
+                char top = k.peek();
+                if(ch=='}'){
+                    if(top!='{')     return false;
+                }
+                else if(ch==']'){
+                    if(top!='[')     return false;
+                }
+                else{
+                    if(top!='(')     return false;
+                }
+                k.pop();
+            }
+        }
+        if(k.isEmpty())    return true;
+        else{
+            return false;
+        }
+    }
+}
