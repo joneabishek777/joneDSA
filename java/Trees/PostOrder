@@ -1,0 +1,18 @@
+https://www.geeksforgeeks.org/problems/postorder-traversal/1
+class Solution {
+     void traversal(Node node,ArrayList <Integer> list){
+        if(node == null){
+            return ;
+        }
+        
+        traversal(node.left,list);
+        traversal(node.right,list);
+        list.add(node.data);
+    }
+    public ArrayList<Integer> postOrder(Node node) {
+       ArrayList <Integer> list = new ArrayList<>();
+        traversal(node,list);
+        return list;
+        
+    }
+}
