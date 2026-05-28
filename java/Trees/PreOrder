@@ -1,0 +1,19 @@
+https://www.geeksforgeeks.org/problems/preorder-traversal/1
+class Solution {
+    
+    void traversal(Node node,ArrayList <Integer> list){
+        if(node == null){
+            return ;
+        }
+        list.add(node.data);
+        traversal(node.left,list);
+        traversal(node.right,list);
+    }
+    public ArrayList<Integer> preOrder(Node node) {
+        //  code here
+        ArrayList <Integer> list = new ArrayList<>();
+        traversal(node,list);
+        return list;
+      
+    }
+}
