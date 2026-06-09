@@ -1,0 +1,10 @@
+https://www.geeksforgeeks.org/problems/height-of-binary-tree/1
+class Solution {
+    public int height(Node root) {
+        // code here
+        if(root==null)    return -1;
+        int lefth = height(root.left);
+        int righth = height(root.right);
+        return 1+Math.max(lefth,righth);
+    }
+}
