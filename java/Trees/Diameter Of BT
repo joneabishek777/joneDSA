@@ -1,0 +1,17 @@
+https://www.geeksforgeeks.org/problems/diameter-of-binary-tree/1
+class Solution {
+       int dia = 0;
+    public int height(Node root) {
+        // code here
+        if(root == null)      return 0;
+        int left = height(root.left);
+        int right = height(root.right);
+        dia = Math.max(dia,left+right);
+        return 1+Math.max(left,right);
+    }
+
+public int diameter(Node root) {
+    height(root);
+    return dia;
+}
+}
